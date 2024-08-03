@@ -1,0 +1,99 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "jsx": "react-jsx", // or "react" if you're using older React versions
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "paths": {
+      "*": [
+        "node_modules/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
+// {
+//   "compilerOptions": {
+//     "target": "es6",
+//     "module": "esnext",
+//     "moduleResolution": "node",
+//     "jsx": "react-jsx",
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "baseUrl": "./",
+//     "paths": {
+//       "@/*": [
+//         "src/*"
+//       ]
+//     }
+//   },
+//   "include": [
+//     "src/**/*"
+//   ],
+//   "exclude": [
+//     "node_modules"
+//   ]
+// }
+// {
+//   "compilerOptions": {
+//     "target": "esnext",
+//     "module": "esnext",
+//     "strict": true,
+//     "jsx": "react-jsx", // or "react" if you're using older React versions
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "outDir": "./dist",
+//     "baseUrl": "./src",
+//     "paths": {
+//       "*": [
+//         "node_modules/*"
+//       ]
+//     }
+//   },
+//   "include": [
+//     // "src/**/*",
+//     "src"
+//   ],
+//   "exclude": [
+//     "node_modules",
+//     "dist"
+//   ]
+// }
+// {
+//   "compilerOptions": {
+//     "target": "es6",
+//     "module": "esnext",
+//     "moduleResolution": "node",
+//     "jsx": "react-jsx",
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "baseUrl": "./",
+//     "paths": {
+//       "@/*": [
+//         "src/*"
+//       ]
+//     }
+//   },
+//   "include": [
+//     "src/**/*"
+//   ],
+//   "exclude": [
+//     "node_modules"
+//   ]
+// }
