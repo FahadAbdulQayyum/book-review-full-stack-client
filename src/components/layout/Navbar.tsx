@@ -8,7 +8,7 @@ interface NavbarProps {
   icon?: string,
 }
 
-const Navbar: React.FC<NavbarProps> = ({ title = "Book Review Management App", icon = "fas fa-id-card-alt" }) => {
+const Navbar: React.FC<NavbarProps> = ({ title = "Book Review Management App", icon = "fa-solid fa-book" }) => {
   const { isAuthenticated, logout, user } = useContext(AuthContext)
   const { clearBooks } = useContext(BookContext)
 
@@ -45,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ title = "Book Review Management App", i
   return (
     <div className='navbar bg-primary'>
       <h1>
-        <i className={icon} />
+        <i className={icon} style={{ margin: '0 .5rem' }} />
         {title}
       </h1>
       <ul>

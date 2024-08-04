@@ -1,4 +1,5 @@
 import {
+    GET_ALL_BOOKS,
     GET_BOOKS,
     CLEAR_FILTER,
     ADD_BOOK,
@@ -14,6 +15,13 @@ import { Book } from './BookState';
 
 export default (state: any, action: any) => {
     switch (action.type) {
+        case GET_ALL_BOOKS:
+            return {
+                ...state,
+                allBooks: action.payload,
+                isAuthenticated: null,
+                loading: false
+            }
         case GET_BOOKS:
             return {
                 ...state,

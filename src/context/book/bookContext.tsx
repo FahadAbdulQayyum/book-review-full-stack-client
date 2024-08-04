@@ -9,10 +9,12 @@ import { Book, BookState } from "./BookState";
 
 
 interface BookContextType {
+    allBooks: Book[],
     books: Book[],
     current: Book | null;
     error: null;
     loading: null;
+    getAllBooks: () => void;
     getBooks: () => void;
     addBook: (book: Book) => void;
     deleteBook: (id: string) => void;
@@ -40,12 +42,14 @@ interface BookContextType {
 
 // Create context with a default value
 const defaultContextValue: BookState = {
+    allBooks: [],
     books: [],
     // current: [],
     // current: '',
     current: null,
     error: null,
     loading: null,
+    getAllBooks: () => { },
     getBooks: () => { },
     addBook: () => { },
     deleteBook: () => { },

@@ -2,7 +2,23 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #003699;
+  /* --primary-color: #003699; */
+  /* --primary-color: #CCD5AE; */
+  --primary-color: #FF8343;
+  /* --primary-color: #4158A6; */
+  /* --primary-color: #C75B7A; */
+  /* --primary-color: #6482AD; */
+  /* --primary-color: #5F6F65; */
+  /* --primary-color: #03346E; */
+  /* --primary-color: #021526; */
+  /* --primary-color: #694F8E; */
+  /* --primary-color: #B43F3F; */
+  /* --primary-color: #708871; */
+  /* --primary-color: #134B70; */
+  /* --primary-color: #50B498; */
+  /* --primary-color: #1A5319; */
+  /* --primary-color: #009FBD; */
+  /* --primary-color: #36BA98; */
   --secondary-color: #ebcc20;
   --dark-color: #333333;
   --light-color: #f4f4f4;

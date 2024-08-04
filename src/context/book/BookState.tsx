@@ -3,6 +3,7 @@ import bookContext from "./bookContext";
 import bookReducer from './bookReducer';
 
 import {
+    GET_ALL_BOOKS,
     ADD_BOOK,
     DELETE_BOOK,
     UPDATE_BOOK,
@@ -34,11 +35,13 @@ export interface Book {
 }
 
 export interface BookState {
+    allBooks: Book[];
     books: Book[];
     // current: Book[];
     current: Book | null;
     error: null;
     loading: null;
+    getAllBooks: () => void;
     getBooks: () => void;
     addBook: (book: Book) => void;
     deleteBook: (id: string) => void;
@@ -60,6 +63,7 @@ interface Props {
 
 const BookState: FC<Props> = props => {
     const initialState = {
+        allBooks: [],
         books: [
             // {
             //     // id: 0,
@@ -115,6 +119,24 @@ const BookState: FC<Props> = props => {
             dispatch({ type: GET_BOOKS, payload: res.data });
         } catch (err: any) {
             // dispatch({ type: BOOK_ERROR, payload: err.response.msg })
+            dispatch({ type: BOOK_ERROR, payload: (err.response.data.msg || err.response.msg) })
+        }
+    }
+
+    const getAllBooks = async () => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+            console.log('API...', API)
+            const res = await axios.get(`${API}/api/books/all`, config)
+            // const res = await axios.get(`http://localhost:3000/api/books/all`, config)
+            console.log('resssss...', res)
+            dispatch({ type: GET_ALL_BOOKS, payload: res.data })
+        } catch (err: any) {
+            console.log(err)
             dispatch({ type: BOOK_ERROR, payload: (err.response.data.msg || err.response.msg) })
         }
     }
@@ -195,11 +217,13 @@ const BookState: FC<Props> = props => {
 
     return (
         <bookContext.Provider value={{
+            allBooks: state.allBooks,
             books: state.books,
             current: state.current,
             filtered: state.filtered,
             error: state.error,
             loading: state.loading,
+            getAllBooks,
             getBooks,
             addBook,
             deleteBook,

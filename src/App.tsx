@@ -12,6 +12,7 @@ import Alerts from './components/layout/Alerts';
 import AlertState from './context/alert/AlertState';
 import setAuthToken from './context/utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute';
+import AllBooks from './components/books/allBooks';
 // import AuthContext from './context/auth/authContext';
 
 const App: React.FC = () => {
@@ -45,6 +46,7 @@ const App: React.FC = () => {
                   <Route path='/' element={<PrivateRoute element={< Home />} />} />
                   <Route path='/about' element={<PrivateRoute element={<About />} />} /> */}
 
+                  <Route path='/all' element={<AllBooks />} />
                   <Route path='/login' element={<Login />} />
                   <Route path='/signup' element={<Register />} />
                   <Route path='/' element={<PrivateRoute />}>

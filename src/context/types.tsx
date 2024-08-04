@@ -1,7 +1,9 @@
 // export const API = 'https://book-review-platform-server.vercel.app'
 // export const API = 'http://localhost:5000'
+// export const API = 'https://server-fahadabdulqayyum-fahadabdulqayyums-projects.vercel.app'
 export const API = 'https://server-eight-rust.vercel.app'
 
+export const GET_ALL_BOOKS = 'GET_ALL_BOOKS';
 export const GET_BOOKS = 'GET_BOOKS';
 export const ADD_BOOK = 'ADD_BOOK';
 export const DELETE_BOOK = 'DELETE_BOOK';

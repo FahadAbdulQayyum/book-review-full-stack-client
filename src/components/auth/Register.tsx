@@ -1,30 +1,49 @@
 import React, { useContext, useEffect, useState } from 'react'
 import AlertContext from '../../context/alert/alertContext'
 import AuthContext from '../../context/auth/authContext'
+import { useNavigate } from 'react-router-dom'
 
 const Register = (props: any) => {
     const { setAlert } = useContext(AlertContext)
     const { signup, error, clearErrors, isAuthenticated } = useContext(AuthContext)
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         if (isAuthenticated) {
-            props?.history?.push('/')
+            // console.log('I\'m in login pageee', props)
+            console.log('I\'m in login pageee')
+            // props?.history?.push('/')
+            navigate('/')
         }
 
-        if (error === 'A User with this email already exists.') {
+        if (error === '') {
             setAlert(error, 'danger')
             clearErrors()
         }
-        // else {
-        //     setAlert(error, 'danger')
-        // }
-
-        setTimeout(() => {
-            clearErrors()
-        }, 5000);
-
         // eslint-disable-next-line
-    }, [error, isAuthenticated, props.history])
+        // }, [])
+    }, [error, isAuthenticated, props?.history])
+
+    // useEffect(() => {
+    //     if (isAuthenticated) {
+    //         props?.history?.push('/')
+    //     }
+
+    //     if (error === 'A User with this email already exists.') {
+    //         setAlert(error, 'danger')
+    //         clearErrors()
+    //     }
+    //     // else {
+    //     //     setAlert(error, 'danger')
+    //     // }
+
+    //     setTimeout(() => {
+    //         clearErrors()
+    //     }, 5000);
+
+    //     // eslint-disable-next-line
+    // }, [error, isAuthenticated, props.history])
 
     const [user, setUser] = useState({
         name: '',
