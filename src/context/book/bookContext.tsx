@@ -1,12 +1,6 @@
 import { createContext } from "react";
 import { Book, BookState } from "./BookState";
 
-// // Define the type for your context value
-// interface BookContextType {
-//     title?: string;
-//     author?: string;
-// }
-
 
 interface BookContextType {
     allBooks: Book[],
@@ -24,29 +18,14 @@ interface BookContextType {
     clearCurrent: () => void;
     updateBook: (book: Book) => void;
     filterBook: (text: string) => void;
-    // filtered: string[] | null;
     filtered: Book[];
     clearFilter: () => void;
 }
 
-// interface BookContextType {
-//     books: Book[];
-//     addBook: (book: Book) => void;
-//     deleteBook: (id: number) => void;
-//     setCurrent: (book: Book) => void;
-//     clearCurrent: () => void;
-//     updateBook: (book: Book) => void;
-//     filterBook: (text: string) => void;
-//     setAlert: (msg: string, type: string) => void;
-//     removeAlert: () => void;
-// }
 
-// Create context with a default value
 const defaultContextValue: BookState = {
     allBooks: [],
     books: [],
-    // current: [],
-    // current: '',
     current: null,
     error: null,
     loading: null,
@@ -66,7 +45,6 @@ const defaultContextValue: BookState = {
     removeAlert: () => { }
 };
 
-// const bookContext = createContext<BookState>(defaultContextValue);
 const bookContext = createContext<BookContextType>(defaultContextValue);
 
 export default bookContext;

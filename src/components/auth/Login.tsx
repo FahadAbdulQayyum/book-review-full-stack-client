@@ -12,9 +12,6 @@ const Login = (props: any) => {
 
     useEffect(() => {
         if (isAuthenticated) {
-            // console.log('I\'m in login pageee', props)
-            console.log('I\'m in login pageee')
-            // props?.history?.push('/')
             navigate('/home')
         }
 
@@ -23,8 +20,7 @@ const Login = (props: any) => {
             clearErrors()
         }
         // eslint-disable-next-line
-        // }, [])
-    }, [error, isAuthenticated, props?.history])
+    }, [error, isAuthenticated])
 
     const [user, setUser] = useState({
         email: 'fahad@gmail.com',
@@ -40,7 +36,6 @@ const Login = (props: any) => {
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('onSubmittteeeeddd!', email, password)
         if (email === '' || password === '') {
             setAlert('Please fill all fields', 'danger')
         } else {

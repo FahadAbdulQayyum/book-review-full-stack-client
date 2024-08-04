@@ -11,9 +11,6 @@ const Register = (props: any) => {
 
     useEffect(() => {
         if (isAuthenticated) {
-            // console.log('I\'m in login pageee', props)
-            console.log('I\'m in login pageee')
-            // props?.history?.push('/')
             navigate('/home')
         }
 
@@ -22,28 +19,7 @@ const Register = (props: any) => {
             clearErrors()
         }
         // eslint-disable-next-line
-        // }, [])
-    }, [error, isAuthenticated, props?.history])
-
-    // useEffect(() => {
-    //     if (isAuthenticated) {
-    //         props?.history?.push('/')
-    //     }
-
-    //     if (error === 'A User with this email already exists.') {
-    //         setAlert(error, 'danger')
-    //         clearErrors()
-    //     }
-    //     // else {
-    //     //     setAlert(error, 'danger')
-    //     // }
-
-    //     setTimeout(() => {
-    //         clearErrors()
-    //     }, 5000);
-
-    //     // eslint-disable-next-line
-    // }, [error, isAuthenticated, props.history])
+    }, [error, isAuthenticated])
 
     const [user, setUser] = useState({
         name: '',
@@ -62,13 +38,11 @@ const Register = (props: any) => {
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('onSubmittteeeeddd!', name, email, password)
         if (name === '' || email === '' || password === '') {
             setAlert('Please fill all fields', 'danger')
         } else if (password !== cpassword) {
             setAlert('Password is incorrect', 'danger')
         } else {
-            console.log('userrrrr.....', user)
             signup(user)
             setAlert('User Registered', 'success')
         }
@@ -98,10 +72,8 @@ const Register = (props: any) => {
                     <input type="password" name='cpassword' placeholder='Enter your password again' value={cpassword} onChange={onChange} minLength={6} />
                 </div>
                 <input type='submit' value={"Submit"} className='btn btn-primary btn-block'
-                // onSubmit={onSubmit}
                 />
             </form>
-            {/* {error && <small className='btn btn-dark btn-block'>{error}</small>} */}
         </div >
     )
 }

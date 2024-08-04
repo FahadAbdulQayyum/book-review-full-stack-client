@@ -13,7 +13,6 @@ import AlertState from './context/alert/AlertState';
 import setAuthToken from './context/utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute';
 import AllBooks from './components/books/allBooks';
-// import AuthContext from './context/auth/authContext';
 
 const App: React.FC = () => {
 
@@ -21,7 +20,6 @@ const App: React.FC = () => {
     setAuthToken(localStorage.token);
   };
 
-  // const { isAuthenticated } = useContext(AuthContext)
 
   return (
     <AuthState>
@@ -33,19 +31,6 @@ const App: React.FC = () => {
               <div className="container">
                 <Alerts />
                 <Routes>
-
-                  {/* <PrivateRoute>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/signup' element={<Register />} />
-                  </PrivateRoute> */}
-
-                  {/* <Route path='/login' element={<Login />} />
-                  <Route path='/signup' element={<Register />} />
-                  <Route path='/' element={<PrivateRoute element={< Home />} />} />
-                  <Route path='/about' element={<PrivateRoute element={<About />} />} /> */}
-
                   <Route path='/all' element={<AllBooks />} />
                   <Route path='/login' element={<Login />} />
                   <Route path='/signup' element={<Register />} />
@@ -53,22 +38,6 @@ const App: React.FC = () => {
                   <Route path='/' element={<PrivateRoute />}>
                     <Route path='/home' element={<Home />} />
                   </Route>
-
-
-                  {/* <Route path="/" element={<PrivateRoute element={<Home />} />} />
-                  <Route path="/about" element={<PrivateRoute element={<About />} />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/signup" element={<Register />} /> */}
-
-                  {/* Private routes starts*/}
-                  {/* <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/signup' element={<Register />} />
-                  </Route> */}
-                  {/* Private routes ends*/}
-
                 </Routes>
               </div>
             </Fragment>

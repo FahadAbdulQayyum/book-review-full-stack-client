@@ -3,31 +3,19 @@ import { AUTH_ERROR, CLEAR_ERRORS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, SIGNUP_FAI
 export default (state: any, action: any) => {
     switch (action.type) {
         case USER_LOADED:
-            console.log('user.....,,,,', action.payload)
             return {
                 ...state,
                 isAuthenticated: true,
                 loading: false,
                 user: action.payload,
                 reviews: action.payload.reviews
-                // ...action.payload.reviews.map((v: any) => console.log('...,,,,', v.bookId)),
-                // ...action.payload.reviews.map((v: any) => [state.reviews].push(v.bookId)),
-                // c: console.log('...,,,,', state.reviews)
             }
-        // case LOGIN_SUCCESS:
-        //     return {
-        //         ...state,
-        //         isAuthenticated: true,
-        //         user: action.payload
-        //     }
+
         case SIGNUP_SUCCESS:
         case LOGIN_SUCCESS:
             localStorage.setItem('token', action.payload.token)
-            // localStorage.setItem('token', action.payload)
-            console.log('consolo', action.payload)
             return {
                 ...state,
-                // user: [...action.payload],
                 ...action.payload,
                 isAuthenticated: true,
                 loading: false,
@@ -48,10 +36,6 @@ export default (state: any, action: any) => {
         case CLEAR_ERRORS:
             return {
                 ...state,
-                // token: null,
-                // isAuthenticated: false,
-                // loading: false,
-                // user: null,
                 error: null,
             }
         case UPDATE_REVIEW:

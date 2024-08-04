@@ -9,7 +9,7 @@ const Home = () => {
     const { loadUser } = useContext(AuthContext)
 
     useEffect(() => {
-        loadUser() // When the component mounts, load user data from the server.
+        loadUser()
     }, [])
 
     return (

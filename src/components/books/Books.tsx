@@ -25,20 +25,11 @@ const Books = () => {
 
     return (
         <Fragment>
-            {/* {books.map(book => <BookItem key={book.id} book={book} />)} */}
-            {/* {
-                filtered ? filtered?.map(book => <BookItem key={book?.id} book={book} />)
-                    :
-                    books?.map(book => <BookItem key={book?.id} book={book} />)
-            } */}
-
             {books !== null && !loading ? (
                 <>
                     {
-                        // filtered ? filtered?.map(book => <BookItem key={book?.id} book={book} />)
                         filtered ? filtered?.map(book => <BookItem key={book?._id} book={book} />)
                             :
-                            // BookList?.map(book => <BookItem key={book?.id} book={book} />)
                             BookList?.map(book => <BookItem key={book?._id} book={book} />)
                     }
                 </>

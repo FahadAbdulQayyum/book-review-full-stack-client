@@ -15,9 +15,6 @@ const BookFilter = () => {
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         if (text.current && text.current.value !== '') {
-            // const value: string = text.current.valueOf()
-            // filterBook(value);
-
             filterBook(text.current.value);
         } else {
             clearFilter();

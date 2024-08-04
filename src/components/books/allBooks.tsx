@@ -1,57 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import BookContext from '../../context/book/bookContext'
 import AuthContext from '../../context/auth/authContext'
 import AlertContext from '../../context/alert/alertContext'
-import { useNavigate } from 'react-router-dom'
 import RatingStars from '../ratingStars/RatingStarts'
 
-// const AllBooks = () => {
 const AllBooks = (props: any) => {
 
-    const navigate = useNavigate()
-
-    // const [bookId, setBookId] = useState<formProps[]>([])
-    const [bookId, setBookId] = useState<string[]>([])
-
-    const { setAlert } = useContext(AlertContext)
-    const { error, clearErrors, user, isAuthenticated, reviews, reviewUpdate } = useContext(AuthContext)
-    // const { allBooks, getAllBooks, reviewLike, reviews } = useContext(BookContext)
+    const { isAuthenticated, reviews, reviewUpdate } = useContext(AuthContext)
     const { allBooks, getAllBooks, reviewLike } = useContext(BookContext)
-
-    // const { reviews } = user
-
-    // useEffect(() => {
-    //     if (isAuthenticated) {
-    //         // console.log('I\'m in login pageee', props)
-    //         console.log('I\'m in login pageee')
-    //         // props?.history?.push('/')
-    //         navigate('/home')
-    //     }
-
-    //     if (error === '') {
-    //         setAlert(error, 'danger')
-    //         clearErrors()
-    //     }
-    //     // eslint-disable-next-line
-    //     // }, [])
-    // }, [error, isAuthenticated, props?.history])
-
 
     useEffect(() => {
         getAllBooks()
-        // user !== null && user.reviews && console.log('user.reviewsss', user.reviews)
-
-        reviews && reviews.map(rv => setBookId([rv.bookId]))
-
-        // user && setBookId(user)
-        // user !== null && user.reviews && setBookId(user.reviews)
-        // console.log('allBooksss', allBooks)
-        console.log('reviewss....pre')
-        console.log('reviewss....', reviews)
-        // eslint-disable-next-line
-        // }, [])
     }, [reviews])
-    // }, [user])
 
     const onLike = (id: string) => {
         reviewLike(id)
@@ -78,7 +38,6 @@ const AllBooks = (props: any) => {
                         </span>
                         {v.title}
 
-                        {/* <span style={{ float: 'right' }} className={`badge ${ rating< 3? 'badge-danger' : 'badge-success'}`}>{rating}</span> */}
                         <span style={{ float: 'right', color: '#ebcc20' }}>
                             <RatingStars rating={v.rating} />
                         </span>
@@ -87,10 +46,6 @@ const AllBooks = (props: any) => {
                             <small className='text-xsm'>{v.bookReviewText}</small>
                         </span>
                         <ul className='list'>
-                            {/* {author && ( */}
-                            {/* // <i className='fas fa-envelope-open' /> */}
-                            {/* <i className='fas fa-user-tie' /> {author} */}
-                            {/* )} */}
                             <li>
                                 <span className='border'>
                                     <i className='fas fa-pen' />
@@ -102,11 +57,8 @@ const AllBooks = (props: any) => {
                                     <i className='fas fa-calendar-alt' />
                                 </span>
                                 {v.publicationYear}
-                                {/* <i className='fas fa-calendar' /> {publicationYear} */}
                             </li>
                             <li>
-                                {/* <i className='fas fa-tags' /> {genre} */}
-                                {/* <i className='fas fa-tag' /> {genre} */}
                                 <span className='border'>
                                     <i className='fas fa-list' />
                                 </span>

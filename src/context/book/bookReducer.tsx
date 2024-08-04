@@ -38,22 +38,16 @@ export default (state: any, action: any) => {
             return {
                 ...state,
                 reviews: [...action.payload]
-                // reviews: state.reviews.map((review: any) => review.bookId === action.payload ? console.log('review.like...', review.like) : console.log('didn\'t match'))
-                // reviews: state.reviews.map((review: any) => review.bookId === action.payload ? review.like === false ? review.like = true : review.like === true : review.like)
             }
         case UPDATE_BOOK:
             return {
                 ...state,
                 books: state.books.map((book: any) => book._id === action.payload._id ? action.payload : book)
-                // books: state.books.map((book: any) => +book.id === +action.payload.id ? action.payload : book)
             }
         case DELETE_BOOK:
-            console.log('onDeletedddd!!!!')
             return {
                 ...state,
-                // books: state.books.filter((book: Book) => book.id !== action.payload),
                 books: state.books.filter((book: Book) => book._id !== action.payload),
-                // books: state.books.filter((book: any) => book.id !== action.payload),
             }
         case SET_CURRENT:
             return {
@@ -70,8 +64,6 @@ export default (state: any, action: any) => {
                 ...state,
                 filtered: state.books.filter((book: Book) => {
                     const regex = new RegExp(`${action.payload}`, 'gi');
-                    console.log('updaebook...', book)
-                    // return book.name.match(regex) || book.author.match(regex) || book.genre.match(regex) || book.publicationYear.match(regex);
                     return book.title.match(regex) || book.author.match(regex) || book.genre.match(regex) || book.publicationYear.toString().match(regex);
                 })
             }

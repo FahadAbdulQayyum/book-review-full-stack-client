@@ -20,7 +20,6 @@ const Navbar: React.FC<NavbarProps> = ({ title = "Book Review Management App", i
 
   const authLinks = (
     <Fragment>
-      {/* <li>Hello {user && user?.name}</li> */}
       <li>Hello {user && user?.name}</li>
       <li>
         <a href='#!' onClick={onLogout}>
