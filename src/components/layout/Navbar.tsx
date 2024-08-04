@@ -28,7 +28,10 @@ const Navbar: React.FC<NavbarProps> = ({ title = "Book Review Management App", i
         </a>
       </li>
       <li>
-        <Link to='/all'>Dashboard</Link>
+        <Link to='/all'>All Books</Link>
+      </li>
+      <li>
+        <Link to='/home'>Dashboard</Link>
       </li>
     </Fragment>
   )
