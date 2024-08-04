@@ -57,27 +57,11 @@ export default (state: any, action: any) => {
         case UPDATE_REVIEW:
             return {
                 ...state,
-                // reviews: state.reviews.map((review: any) => review.bookId === action.payload ? console.log('review.like...', review.like) : console.log('didn\'t match'))
-
-                // ...state.reviews.map((review: any) => {
-                //     if (review.bookId === action.payload) {
-                //         console.log('11111....')
-                //         review.like = !review.like;
-                //     }
-                //     console.log('2222....', review)
-                //     return review;
-                // })
-
-                // reviews: [...state.reviews.map((review: any) => review.bookId === action.payload ? review.like = !review.like : "")]
-                // ...state.reviews.map((review: any) => review.bookId === action.payload ? console.log('review.like...', review.like) : console.log('\'\''))
-                // ...state.reviews.map((review: any) => review.bookId === action.payload ? review.like = !review.like : review)
-
-                // ...state.reviews.map((review: any) => {
                 reviews: state.reviews.map((review: any) => {
                     if (review.bookId === action.payload) {
-                        return { ...review, like: !review.like }; // Toggle the like status immutably
+                        return { ...review, like: !review.like }
                     }
-                    return review; // Return the unchanged review
+                    return review
                 })
             }
     }
