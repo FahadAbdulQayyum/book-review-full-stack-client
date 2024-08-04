@@ -42,7 +42,11 @@ const AllBooks = (props: any) => {
             {allBooks.map(v => <>
                 <div className='card bg-light'>
                     <h3 className='text-primary text-left'>
-                        <i className='fas fa-book' /> {v.title}
+                        <span className='border'>
+                            <i className='fas fa-book' />
+                        </span>
+                        {v.title}
+
                         {/* <span style={{ float: 'right' }} className={`badge ${rating < 3 ? 'badge-danger' : 'badge-success'}`}>{rating}</span> */}
                         <span style={{ float: 'right', color: '#ebcc20' }}>
                             <RatingStars rating={v.rating} />
@@ -57,27 +61,37 @@ const AllBooks = (props: any) => {
                             {/* <i className='fas fa-user-tie' /> {author} */}
                             {/* )} */}
                             <li>
-                                <i className='fas fa-pen' /> {v.author}
+                                <span className='border'>
+                                    <i className='fas fa-pen' />
+                                </span>
+                                {v.author}
                             </li>
                             <li>
-                                <i className='fas fa-calendar-alt' /> {v.publicationYear}
+                                <span className='border'>
+                                    <i className='fas fa-calendar-alt' />
+                                </span>
+                                {v.publicationYear}
                                 {/* <i className='fas fa-calendar' /> {publicationYear} */}
                             </li>
                             <li>
                                 {/* <i className='fas fa-tags' /> {genre} */}
                                 {/* <i className='fas fa-tag' /> {genre} */}
-                                <i className='fas fa-list' /> {v.genre}
+                                <span className='border'>
+                                    <i className='fas fa-list' />
+                                </span>
+                                {v.genre.charAt(0).toUpperCase() + v.genre.slice(1)}
                                 {/* <i className='fas fa-film' /> {genre} */}
                                 {/* <i className='fas fa-music' /> {genre} */}
                             </li>
                         </ul>
-                        {/* <p>
-                            <button className='btn btn-dark btn-sm' onClick={onEdit}>Edit</button>
-                            <button className='btn btn-danger btn-sm' onClick={onDelete}>Delete</button>
-                        </p> */}
+                        {isAuthenticated && <p>
+                            <button className='btn btn-dark btn-sm' >Edit</button>
+                            <button className='btn btn-danger btn-sm' >Delete</button>
+                        </p>}
                     </h3>
                 </div>
-            </>)}
+            </>)
+            }
         </div>
     )
 }

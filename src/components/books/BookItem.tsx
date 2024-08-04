@@ -31,7 +31,8 @@ const BookItem: FC<BookProps> = ({ book }) => {
     return (
         <div className='card bg-light'>
             <h3 className='text-primary text-left'>
-                <i className='fas fa-book' /> {title}
+                <i className='fas fa-book' />
+                {title}
                 {/* <span style={{ float: 'right' }} className={`badge ${rating < 3 ? 'badge-danger' : 'badge-success'}`}>{rating}</span> */}
                 <span style={{ float: 'right', color: '#ebcc20' }}>
                     <RatingStars rating={rating} />
@@ -64,8 +65,8 @@ const BookItem: FC<BookProps> = ({ book }) => {
                     <button className='btn btn-dark btn-sm' onClick={onEdit}>Edit</button>
                     <button className='btn btn-danger btn-sm' onClick={onDelete}>Delete</button>
                 </p>
-            </h3>
-        </div>
+            </h3 >
+        </div >
     )
 }
 
