@@ -28,9 +28,9 @@ const Navbar: React.FC<NavbarProps> = ({ title = "Book Review Management App", i
           <span className='hide-sm'>Logout</span>
         </a>
       </li>
-      {/* <li>
+      <li>
         <Link to='/all'>Dashboard</Link>
-      </li> */}
+      </li>
     </Fragment>
   )
 
@@ -42,9 +42,9 @@ const Navbar: React.FC<NavbarProps> = ({ title = "Book Review Management App", i
       <li>
         <Link to='/login'>Login</Link>
       </li>
-      {/* <li>
+      <li>
         <Link to='/all'>Dashboard</Link>
-      </li> */}
+      </li>
     </Fragment>
   )
 

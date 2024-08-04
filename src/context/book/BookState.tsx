@@ -14,7 +14,8 @@ import {
     BOOK_ERROR,
     GET_BOOKS,
     CLEAR_BOOKS,
-    API
+    API,
+    REVIEW_LIKE
 } from '../types'
 import axios from "axios";
 
@@ -32,6 +33,7 @@ export interface Book {
     genre: string;
     bookReviewText: string;
     rating: number;
+    // reviews: string[]
 }
 
 export interface BookState {
@@ -44,6 +46,7 @@ export interface BookState {
     getAllBooks: () => void;
     getBooks: () => void;
     addBook: (book: Book) => void;
+    reviewLike: (id: string) => void;
     deleteBook: (id: string) => void;
     clearBooks: () => void;
     setCurrent: (book: Book) => void;
@@ -101,7 +104,6 @@ const BookState: FC<Props> = props => {
         error: null,
 
         loading: null,
-
     }
     const [state, dispatch] = useReducer(bookReducer, initialState);
 
@@ -154,6 +156,25 @@ const BookState: FC<Props> = props => {
             const res = await axios.post(`${API}/api/books`, book, config)
             console.log('ressss..addbook', res)
             dispatch({ type: ADD_BOOK, payload: res.data });
+        } catch (err: any) {
+            // dispatch({ type: BOOK_ERROR, payload: err.response.msg })
+            dispatch({ type: BOOK_ERROR, payload: (err.response.data.msg || err.response.msg) })
+        }
+    }
+
+    const reviewLike = async (id: string) => {
+        // book.id = uuid();
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+            const data = { review: true }
+            // const res = await axios.post('api/books', book, config)
+            const res = await axios.post(`${API}/api/books/review/${id}`, data, config)
+            console.log('ressss..review...', res)
+            dispatch({ type: REVIEW_LIKE, payload: id });
         } catch (err: any) {
             // dispatch({ type: BOOK_ERROR, payload: err.response.msg })
             dispatch({ type: BOOK_ERROR, payload: (err.response.data.msg || err.response.msg) })
@@ -225,6 +246,7 @@ const BookState: FC<Props> = props => {
             loading: state.loading,
             getAllBooks,
             getBooks,
+            reviewLike,
             addBook,
             deleteBook,
             clearBooks,

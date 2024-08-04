@@ -24,6 +24,12 @@ interface AuthContextType {
     // user: formProps[],
     user: formProps | null,
     error: string,
+    reviews: {
+        bookId: string,
+        like: boolean,
+        _id: boolean,
+    }[] | null;
+    reviewUpdate: (id: string) => void;
 }
 
 
@@ -36,6 +42,7 @@ const defaultContextValue: AuthState = {
     // user: [],
     user: null,
     error: '',
+    reviews: null,
     loadUser: () => { },
     // signup: (formData: formProps) => { },
     // login: (formData: formProps) => { },
@@ -43,6 +50,7 @@ const defaultContextValue: AuthState = {
     login: () => { },
     logout: () => { },
     clearErrors: () => { },
+    reviewUpdate: () => { }
 };
 
 const authContext = createContext<AuthContextType>(defaultContextValue);

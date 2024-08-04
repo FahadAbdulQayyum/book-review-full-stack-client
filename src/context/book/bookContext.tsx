@@ -17,6 +17,7 @@ interface BookContextType {
     getAllBooks: () => void;
     getBooks: () => void;
     addBook: (book: Book) => void;
+    reviewLike: (id: string) => void;
     deleteBook: (id: string) => void;
     clearBooks: () => void;
     setCurrent: (book: Book) => void;
@@ -52,6 +53,7 @@ const defaultContextValue: BookState = {
     getAllBooks: () => { },
     getBooks: () => { },
     addBook: () => { },
+    reviewLike: () => { },
     deleteBook: () => { },
     clearBooks: () => { },
     setCurrent: () => { },

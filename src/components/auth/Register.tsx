@@ -14,7 +14,7 @@ const Register = (props: any) => {
             // console.log('I\'m in login pageee', props)
             console.log('I\'m in login pageee')
             // props?.history?.push('/')
-            navigate('/')
+            navigate('/home')
         }
 
         if (error === '') {

@@ -1,8 +1,11 @@
 // export const API = 'https://book-review-platform-server.vercel.app'
 // export const API = 'http://localhost:5000'
+export const API = 'http://localhost:3000'
 // export const API = 'https://server-fahadabdulqayyum-fahadabdulqayyums-projects.vercel.app'
-export const API = 'https://server-eight-rust.vercel.app'
+// export const API = 'https://server-eight-rust.vercel.app'
 
+export const UPDATE_REVIEW = 'UPDATE_REVIEW';
+export const REVIEW_LIKE = 'REVIEW_LIKE';
 export const GET_ALL_BOOKS = 'GET_ALL_BOOKS';
 export const GET_BOOKS = 'GET_BOOKS';
 export const ADD_BOOK = 'ADD_BOOK';

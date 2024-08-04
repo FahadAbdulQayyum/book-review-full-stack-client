@@ -10,6 +10,7 @@ import {
     FILTER_BOOK,
     CLEAR_BOOKS,
     BOOK_ERROR,
+    REVIEW_LIKE,
 } from '../types';
 import { Book } from './BookState';
 
@@ -32,6 +33,13 @@ export default (state: any, action: any) => {
             return {
                 ...state,
                 books: [...state.books, action.payload]
+            }
+        case REVIEW_LIKE:
+            return {
+                ...state,
+                reviews: [...action.payload]
+                // reviews: state.reviews.map((review: any) => review.bookId === action.payload ? console.log('review.like...', review.like) : console.log('didn\'t match'))
+                // reviews: state.reviews.map((review: any) => review.bookId === action.payload ? review.like === false ? review.like = true : review.like === true : review.like)
             }
         case UPDATE_BOOK:
             return {

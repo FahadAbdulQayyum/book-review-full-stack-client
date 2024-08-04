@@ -31,7 +31,9 @@ const BookItem: FC<BookProps> = ({ book }) => {
     return (
         <div className='card bg-light'>
             <h3 className='text-primary text-left'>
-                <i className='fas fa-book' />
+                <span className='border'>
+                    <i className='fas fa-book' />
+                </span>
                 {title}
                 {/* <span style={{ float: 'right' }} className={`badge ${rating < 3 ? 'badge-danger' : 'badge-success'}`}>{rating}</span> */}
                 <span style={{ float: 'right', color: '#ebcc20' }}>
@@ -47,16 +49,25 @@ const BookItem: FC<BookProps> = ({ book }) => {
                     {/* <i className='fas fa-user-tie' /> {author} */}
                     {/* )} */}
                     <li>
-                        <i className='fas fa-pen' /> {author}
+                        <span className='border'>
+                            <i className='fas fa-pen' />
+                        </span>
+                        {author}
                     </li>
                     <li>
-                        <i className='fas fa-calendar-alt' /> {publicationYear}
+                        <span className='border'>
+                            <i className='fas fa-calendar-alt' />
+                        </span>
+                        {publicationYear}
                         {/* <i className='fas fa-calendar' /> {publicationYear} */}
                     </li>
                     <li>
                         {/* <i className='fas fa-tags' /> {genre} */}
                         {/* <i className='fas fa-tag' /> {genre} */}
-                        <i className='fas fa-list' /> {genre}
+                        <span className='border'>
+                            <i className='fas fa-list' />
+                        </span>
+                        {genre.charAt(0).toUpperCase() + genre.slice(1)}
                         {/* <i className='fas fa-film' /> {genre} */}
                         {/* <i className='fas fa-music' /> {genre} */}
                     </li>

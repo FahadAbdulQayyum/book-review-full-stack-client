@@ -12,6 +12,7 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
+    UPDATE_REVIEW
 } from '../types'
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
@@ -22,7 +23,12 @@ export interface formProps {
     name?: string,
     email: string,
     password: string,
-    cpassword?: string
+    cpassword?: string,
+    reviews?: {
+        bookId: string,
+        like: boolean,
+        _id: boolean,
+    } | null
 }
 
 
@@ -32,12 +38,18 @@ export interface AuthState {
     loadUser: () => void,
     login: (formData: formProps) => void,
     logout: () => void,
+    reviewUpdate: () => void,
     token: string,
     isAuthenticated: boolean,
     loading: boolean,
     // user: formProps[],
     user: formProps | null,
     error: string,
+    reviews: {
+        bookId: string,
+        like: boolean,
+        _id: boolean,
+    }[] | null
 }
 
 interface Props {
@@ -48,8 +60,8 @@ const AuthState: FC<Props> = props => {
     const initialState = {
         token: localStorage.getItem('token') || null,
         // isAuthenticated: null,
-        isAuthenticated: true,
-        // isAuthenticated: false,
+        // isAuthenticated: true,
+        isAuthenticated: false,
         // loading: false,
         // loading: true,
         loading: null,
@@ -129,6 +141,17 @@ const AuthState: FC<Props> = props => {
         dispatch({ type: CLEAR_ERRORS });
     }
 
+    const reviewUpdate = (id: string) => {
+        try {
+            // console.log('id...', id)
+            dispatch({
+                type: UPDATE_REVIEW, payload: id
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <authContext.Provider value={{
             token: state?.token,
@@ -136,6 +159,8 @@ const AuthState: FC<Props> = props => {
             loading: state.loading,
             user: state.user,
             error: state.error,
+            reviews: state.reviews,
+            reviewUpdate,
             signup,
             login,
             logout,

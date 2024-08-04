@@ -15,7 +15,7 @@ const Login = (props: any) => {
             // console.log('I\'m in login pageee', props)
             console.log('I\'m in login pageee')
             // props?.history?.push('/')
-            navigate('/')
+            navigate('/home')
         }
 
         if (error === '') {
@@ -27,8 +27,8 @@ const Login = (props: any) => {
     }, [error, isAuthenticated, props?.history])
 
     const [user, setUser] = useState({
-        email: '',
-        password: '',
+        email: 'fahad@gmail.com',
+        password: 'fahadfahad',
     })
 
     const { email, password } = user
