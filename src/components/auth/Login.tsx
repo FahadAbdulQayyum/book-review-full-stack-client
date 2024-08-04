@@ -23,8 +23,8 @@ const Login = (props: any) => {
     }, [error, isAuthenticated])
 
     const [user, setUser] = useState({
-        email: 'fahad@gmail.com',
-        password: 'fahadfahad',
+        email: '',
+        password: '',
     })
 
     const { email, password } = user
