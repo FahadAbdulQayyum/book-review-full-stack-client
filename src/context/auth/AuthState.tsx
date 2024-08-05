@@ -112,12 +112,14 @@ const AuthState: FC<Props> = props => {
             if (res.data.token && res.data.token.length > 0) {
                 setAlert('Logged in successfully!', 'success')
                 return dispatch({ type: LOGIN_SUCCESS, payload: res.data })
-            } else if (res.data.msg) {
+            } else if (res.data.success) {
                 setAlert(res.data.msg, res.data.success ? 'success' : 'danger')
                 return dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             } else if (!res.data.success) {
                 setAlert(res.data.msg, res.data.success ? 'success' : 'danger')
-                return dispatch({ type: LOGIN_FAIL, payload: res.data })
+                return dispatch({ type: LOGIN_FAIL })
+            } else {
+                return dispatch({ type: LOGIN_FAIL })
             }
 
             loadUser()
