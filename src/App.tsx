@@ -13,6 +13,7 @@ import AlertState from './context/alert/AlertState';
 import setAuthToken from './context/utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute';
 import AllBooks from './components/books/allBooks';
+import NotFound from './components/layout/pages/NotFound';
 
 const App: React.FC = () => {
 
@@ -38,6 +39,7 @@ const App: React.FC = () => {
                   <Route path='/' element={<PrivateRoute />}>
                     <Route path='/home' element={<Home />} />
                   </Route>
+                  <Route path='/*' element={<NotFound />} />
                 </Routes>
               </div>
             </Fragment>

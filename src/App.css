@@ -497,3 +497,11 @@ table th {
 .side-by-side {
   display: flex;
 }
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
