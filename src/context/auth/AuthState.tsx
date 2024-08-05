@@ -109,16 +109,17 @@ const AuthState: FC<Props> = props => {
         }
         try {
             const res = await axios.post(`${API}/api/auth`, formData, config)
-            console.log('res.data....', res.data)
             if (res.data.token && res.data.token.length > 0) {
-                dispatch({ type: LOGIN_SUCCESS, payload: res.data })
                 setAlert('Logged in successfully!', 'success')
+                return dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             } else if (res.data.msg) {
                 setAlert(res.data.msg, res.data.success ? 'success' : 'danger')
-                if (!res.data.success) {
-                    dispatch({ type: LOGIN_FAIL, payload: res.data })
-                }
+                return dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+            } else if (!res.data.success) {
+                setAlert(res.data.msg, res.data.success ? 'success' : 'danger')
+                return dispatch({ type: LOGIN_FAIL, payload: res.data })
             }
+
             loadUser()
         } catch (err) {
             dispatch({ type: LOGIN_FAIL })
