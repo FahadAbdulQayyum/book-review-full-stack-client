@@ -6,7 +6,9 @@ const PrivateRoute: React.FC = () => {
 
     const { isAuthenticated } = useContext(AuthContext);
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="/all" replace />;
+    return isAuthenticated ? <Outlet /> :
+        <Navigate to="/all" replace />
+        ;
 }
 
 export default PrivateRoute;
