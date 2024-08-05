@@ -90,11 +90,13 @@ const AuthState: FC<Props> = props => {
         try {
             const res = await axios.post(`${API}/api/users`, formData, config)
             dispatch({ type: SIGNUP_SUCCESS, payload: res?.data });
+            setAlert('Signed up successfully!', 'success')
             loadUser()
         } catch (err: any) {
             dispatch({
                 type: SIGNUP_FAIL, payload: (err.config.message || err.response.data.msg || err.response.data)
             });
+            setAlert('Signed up Failed!', 'danger')
         }
     }
 
