@@ -40,7 +40,7 @@ const AlertState: FC<Props> = props => {
 
     return (
         <alertContext.Provider value={{
-            alerts: state.alerts,
+            alerts: state?.alerts,
             setAlert,
         }}>
             {props.children}
