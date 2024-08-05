@@ -1,4 +1,4 @@
-import { FC, useReducer } from "react";
+import { FC, useContext, useReducer } from "react";
 import bookContext from "./bookContext";
 import bookReducer from './bookReducer';
 
@@ -18,6 +18,7 @@ import {
     REVIEW_LIKE
 } from '../types'
 import axios from "axios";
+import AlertContext from "../../context/alert/alertContext";
 
 // Define the types for the context value
 export interface Book {
@@ -67,6 +68,7 @@ const BookState: FC<Props> = props => {
         loading: null,
     }
     const [state, dispatch] = useReducer(bookReducer, initialState);
+    const { setAlert } = useContext(AlertContext)
 
     // Define functions to dispatch actions
     const getBooks = async () => {
@@ -108,8 +110,10 @@ const BookState: FC<Props> = props => {
         try {
             const res = await axios.post(`${API}/api/books`, book, config)
             dispatch({ type: ADD_BOOK, payload: res.data });
+            setAlert("Book Added Successfully", 'success')
         } catch (err: any) {
             dispatch({ type: BOOK_ERROR, payload: (err.response.data.msg || err.response.msg) })
+            setAlert("Book Added Unsuccessful", 'danger')
         }
     }
 
@@ -137,6 +141,7 @@ const BookState: FC<Props> = props => {
         try {
             await axios.delete(`${API}/api/books/${id}`, config)
             dispatch({ type: DELETE_BOOK, payload: id })
+            setAlert("Book Deleted Successfully", 'success')
         } catch (err) {
             console.log(err)
         }
@@ -150,6 +155,7 @@ const BookState: FC<Props> = props => {
         }
         const res = await axios.put(`${API}/api/books/${book._id}`, book, config)
         dispatch({ type: UPDATE_BOOK, payload: res.data });
+        setAlert("Book Updated Successfully", 'success')
     }
     const setCurrent = (book: Book) => dispatch({ type: SET_CURRENT, payload: book });
     const clearCurrent = () => dispatch({ type: CLEAR_CURRENT });
