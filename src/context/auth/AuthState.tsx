@@ -1,4 +1,4 @@
-import { FC, useReducer } from "react";
+import { FC, useContext, useReducer } from "react";
 import authContext from "./authContext";
 import authReducer from './authReducer';
 
@@ -16,6 +16,7 @@ import {
 } from '../types'
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
+import AlertContext from "../../context/alert/alertContext";
 
 export interface formProps {
     name?: string,
@@ -62,6 +63,7 @@ const AuthState: FC<Props> = props => {
         error: null,
     }
     const [state, dispatch] = useReducer(authReducer, initialState);
+    const { setAlert } = useContext(AlertContext)
 
     // load User
     const loadUser = async () => {
@@ -107,8 +109,10 @@ const AuthState: FC<Props> = props => {
             const res = await axios.post(`${API}/api/auth`, formData, config)
             dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             loadUser()
+            res.data.token.length > 0 && setAlert('Logged in successfully!', 'success')
         } catch (err) {
             dispatch({ type: LOGIN_FAIL })
+            setAlert('Login Failed!', 'error')
         }
     }
 

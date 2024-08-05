@@ -22,9 +22,9 @@ const App: React.FC = () => {
 
 
   return (
-    <AuthState>
-      <BookState>
-        <AlertState>
+    <AlertState>
+      <AuthState>
+        <BookState>
           <Router>
             <Fragment>
               <Navbar />
@@ -42,9 +42,9 @@ const App: React.FC = () => {
               </div>
             </Fragment>
           </Router>
-        </AlertState>
-      </BookState>
-    </AuthState >
+        </BookState>
+      </AuthState >
+    </AlertState >
   )
 }
 

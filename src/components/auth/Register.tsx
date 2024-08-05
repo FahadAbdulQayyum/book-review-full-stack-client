@@ -74,7 +74,7 @@ const Register = (props: any) => {
                 <input type='submit' value={"Submit"} className='btn btn-primary btn-block'
                 />
             </form>
-        </div >
+        </div>
     )
 }
 

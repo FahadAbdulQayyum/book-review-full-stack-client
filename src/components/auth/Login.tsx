@@ -40,7 +40,6 @@ const Login = (props: any) => {
             setAlert('Please fill all fields', 'danger')
         } else {
             login(user)
-            setAlert('Logged in successfully!', 'success')
         }
     }
 
