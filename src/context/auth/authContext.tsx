@@ -7,6 +7,12 @@ interface AuthContextType {
     logout: () => void;
     clearErrors: () => void;
     loadUser: () => void,
+    loadReviews: () => void,
+    reviewsToShow: {
+        bookId: string,
+        totalLikes: number,
+        totalDislikes: number,
+    }[] | null,
     token: string;
     isAuthenticated: boolean,
     loading: boolean,
@@ -29,6 +35,8 @@ const defaultContextValue: AuthState = {
     user: null,
     error: '',
     reviews: null,
+    reviewsToShow: null,
+    loadReviews: () => { },
     loadUser: () => { },
     signup: () => { },
     login: () => { },

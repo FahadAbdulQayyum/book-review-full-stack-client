@@ -1,4 +1,4 @@
-import { AUTH_ERROR, CLEAR_ERRORS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, SIGNUP_FAIL, SIGNUP_SUCCESS, UPDATE_REVIEW, USER_LOADED } from "../types"
+import { AUTH_ERROR, CLEAR_ERRORS, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, REVIEWS_LOADED, SIGNUP_FAIL, SIGNUP_SUCCESS, UPDATE_REVIEW, USER_LOADED } from "../types"
 
 export default (state: any, action: any) => {
     switch (action.type) {
@@ -48,5 +48,12 @@ export default (state: any, action: any) => {
                     return review
                 })
             }
+        case REVIEWS_LOADED:
+            return {
+                ...state,
+                reviewsToShow: action.payload
+            }
+        default:
+            return state;
     }
 }

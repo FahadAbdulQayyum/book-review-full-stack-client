@@ -12,7 +12,8 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    UPDATE_REVIEW
+    UPDATE_REVIEW,
+    REVIEWS_LOADED
 } from '../types'
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
@@ -35,6 +36,7 @@ export interface AuthState {
     signup: (formData: formProps) => void,
     clearErrors: () => void,
     loadUser: () => void,
+    loadReviews: () => void,
     login: (formData: formProps) => void,
     logout: () => void,
     reviewUpdate: () => void,
@@ -47,7 +49,12 @@ export interface AuthState {
         bookId: string,
         like: boolean,
         _id: boolean,
-    }[] | null
+    }[] | null,
+    reviewsToShow: {
+        bookId: string,
+        totalLikes: number,
+        totalDislikes: number,
+    }[] | null,
 }
 
 interface Props {
@@ -61,6 +68,7 @@ const AuthState: FC<Props> = props => {
         loading: null,
         user: null,
         error: null,
+        reviewsToShow: null
     }
     const [state, dispatch] = useReducer(authReducer, initialState);
     const { setAlert } = useContext(AlertContext)
@@ -74,6 +82,20 @@ const AuthState: FC<Props> = props => {
         try {
             const res = await axios.get(`${API}/api/auth`)
             dispatch({ type: USER_LOADED, payload: res.data })
+        } catch (err) {
+            dispatch({ type: AUTH_ERROR })
+        }
+    }
+
+    // load Reviews
+    const loadReviews = async () => {
+        if (localStorage.token) {
+            setAuthToken(localStorage.token);
+        }
+
+        try {
+            const res = await axios.get(`${API}/api/books/fetchReviewsData`)
+            dispatch({ type: REVIEWS_LOADED, payload: res.data.data })
         } catch (err) {
             dispatch({ type: AUTH_ERROR })
         }
@@ -111,9 +133,11 @@ const AuthState: FC<Props> = props => {
             const res = await axios.post(`${API}/api/auth`, formData, config)
             if (res.data.token && res.data.token.length > 0) {
                 setAlert('Logged in successfully!', 'success')
+                loadUser()
                 return dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             } else if (res.data.success) {
                 setAlert(res.data.msg, res.data.success ? 'success' : 'danger')
+                loadUser()
                 return dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             } else if (!res.data.success) {
                 setAlert(res.data.msg, res.data.success ? 'success' : 'danger')
@@ -122,7 +146,6 @@ const AuthState: FC<Props> = props => {
                 return dispatch({ type: LOGIN_FAIL })
             }
 
-            loadUser()
         } catch (err) {
             dispatch({ type: LOGIN_FAIL })
             setAlert('Login Failed!', 'danger')
@@ -160,12 +183,14 @@ const AuthState: FC<Props> = props => {
             user: state.user,
             error: state.error,
             reviews: state.reviews,
+            reviewsToShow: state.reviewsToShow,
             reviewUpdate,
             signup,
             login,
             logout,
             clearErrors,
-            loadUser
+            loadUser,
+            loadReviews
         }}>
             {props.children}
         </authContext.Provider >
