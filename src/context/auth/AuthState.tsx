@@ -64,7 +64,8 @@ interface Props {
 const AuthState: FC<Props> = props => {
     const initialState = {
         token: localStorage.getItem('token') || null,
-        isAuthenticated: false,
+        // isAuthenticated: false,
+        isAuthenticated: localStorage.token ? true : false,
         loading: null,
         user: null,
         error: null,
