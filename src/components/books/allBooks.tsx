@@ -39,9 +39,12 @@ const AllBooks = () => {
 
         return filtered && filtered.map(v => (
             <span key={v.bookId} style={{ float: 'right' }}>
-                <small className='text-xsm'><strong>{v.totalLikes}</strong> Liked</small>
-                {" "}
-                <small className='text-xsm'>{v.totalDislikes} Disiked</small>
+                {/* <small className='text-xsm'><strong>{v.totalLikes}</strong> Liked</small> */}
+                <small className='text-xsm text-primary'><strong>{v.totalLikes}</strong> <i className="fa fa-thumbs-up" /></small>
+                {/* {" "} */}
+                {" | "}
+                {/* <small className='text-xsm'>{v.totalDislikes} Disiked</small> */}
+                <small className='text-xsm text-danger'>{v.totalDislikes} <i className="fa fa-thumbs-down" /></small>
             </span>
         ));
     };
@@ -84,11 +87,7 @@ const AllBooks = () => {
                                     </span>
                                     {v.genre.charAt(0).toUpperCase() + v.genre.slice(1)}
                                 </li>
-                                <li>
-                                    <br />
-                                    {revieww ? reviewsToShowOnCard(v._id) : <div style={{ float: 'right' }}>Loading....</div>}
-                                    {/* {reviewsToShowOnCard(v._id) : <div style={{ float: 'right' }}>Loading....</div>} */}
-                                </li>
+
                             </ul>
                             {isAuthenticated && (
                                 <div>
@@ -105,6 +104,10 @@ const AllBooks = () => {
                                 </div>
                             )}
                         </h3>
+                        <br />
+                        <span className="straight">
+                            {revieww ? reviewsToShowOnCard(v._id) : <div style={{ float: 'right' }}>Loading....</div>}
+                        </span>
                     </div>
                 );
             })}
